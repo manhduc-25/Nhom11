@@ -241,7 +241,8 @@
             © 2025 Nguyen Van Lien. All rights reserved.
         </div>
     </footer>
-
+    
+    <!-- Nút trở về back-to-top -->
     <a href="#home" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
     <script>
         const backToTop = document.querySelector('.back-to-top');
@@ -253,6 +254,28 @@
                 backToTop.classList.remove('show');
             }
         });
+    </script>
+
+    <!-- animation rainning -->
+    <div class="rain-container"></div>
+    <script>
+        const rainContainer = document.querySelector('.rain-container');
+
+        function createRaindrop() {
+            const drop = document.createElement('div');
+            drop.classList.add('raindrop');
+
+            drop.style.left = Math.random() * window.innerWidth + 'px';
+            drop.style.animationDuration = (0.5 + Math.random()) + 's';
+            drop.style.height = (10 + Math.random() * 20) + 'px';
+            drop.style.opacity = 0.2 + Math.random() * 0.4;
+
+            rainContainer.appendChild(drop);
+
+            setTimeout(() => drop.remove(), 2000);
+        }
+
+        setInterval(createRaindrop, 50);
     </script>
 </body>
 
