@@ -173,7 +173,8 @@ h2 i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 5px solid black;
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
 }
 
 .section-box {
