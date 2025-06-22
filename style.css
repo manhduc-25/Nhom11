@@ -68,24 +68,8 @@ body, html {
   color: #ffffffcc;               
   text-shadow: 1px 1px 3px black; /* ✅ giúp nổi bật trên nền hoạt tiết */
 }
-/* Typewriter effect */
-.typewriter {
-  font-size: 32px;
-  border-right: 2px solid white;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  animation: typing 3s steps(30) forwards, blink 0.75s step-end infinite;
-  margin-bottom: 20px;
-}
 
-@keyframes typing {
-  from { width: 0 }
-  to { width: 350px }
-}
-@keyframes blink {
-  50% { border-color: transparent }
-}
+
 
 /* Grid of CV cards */
 .team-grid {
