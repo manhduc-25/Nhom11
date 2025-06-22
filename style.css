@@ -1,47 +1,161 @@
-body,
-html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  backdrop-filter: blur(4px);
+  box-sizing: border-box;
 }
 
-.animated-top-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 15%; /* 15% chiều cao màn hình */
-    z-index: -1; /* Nằm sau nội dung chính */
-    background: linear-gradient(-45deg, #ff6ec4, #7873f5, #4ade80, #60a5fa);
-    background-size: 400% 400%;
-    animation: gradientAnimation 8s ease infinite;
+/* ✅ Tăng cỡ chữ, chỉnh màu xanh đậm nhẹ + đổ bóng */
+.topbar .left,
+.topbar .right {
+  font-size: 30px;              /* ✅ to hơn */
+  font-weight: 700;
+  color: #00e676;               /* ✅ xanh neon đậm nhẹ */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* ✅ giúp nổi trên nền tối */
+  white-space: nowrap;
+}
+.fullscreen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+.fullscreen video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
-.main-content {
-    position: relative;
-    z-index: 1;
-    padding: 2rem;
+/* === Hero content (tiêu đề + card) === */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  backdrop-filter: brightness(0.8);
+  text-shadow: 2px 2px 4px rgba(110, 110, 110, 0.7);
+}
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.5);  /* ✅ nền đen mờ */
+  color: #ffffffcc;               
+  text-shadow: 1px 1px 3px black; /* ✅ giúp nổi bật trên nền hoạt tiết */
+}
+/* Typewriter effect */
+.typewriter {
+  font-size: 32px;
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 3s steps(30) forwards, blink 0.75s step-end infinite;
+  margin-bottom: 20px;
 }
 
-h1 {
-    color: #333;
+@keyframes typing {
+  from { width: 0 }
+  to { width: 350px }
+}
+@keyframes blink {
+  50% { border-color: transparent }
 }
 
-ul li {
-    margin: 10px 0;
+/* Grid of CV cards */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.member-card {
+  background: white;
+  color: #333;
+  width: 260px; /* ✅ to hơn */
+  padding: 24px; /* rộng rãi hơn */
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.member-card:hover {
+  transform: translateY(-6px);
+}
+
+.member-card img {
+  width: 200px;   /* ✅ ảnh to hơn */
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.member-card h3 {
+  font-size: 20px;   /* ✅ tên to hơn */
+  margin: 10px 0 4px;
+}
+
+.member-card p {
+  font-size: 15px;   /* nghề nghiệp to hơn chút */
+  color: #555;
+  margin: 0;
+}
+
+.btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-size: 15px;
+}
+.btn.disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media screen and (max-width: 1000px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 600px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width: 400px) {
+  .topbar {
+    font-size: 16px;
+    flex-direction: column;
+    height: auto;
+    padding: 6px 10px;
+    gap: 4px;
+  }
 }
