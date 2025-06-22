@@ -103,8 +103,7 @@ nav ul li a:hover {
     top: 50%;
     left: 10%;
     transform: translateY(-50%);
-    border-top: 7px solid black;
-    border-bottom: 7px solid black;
+    border-block: 7px solid black;
     padding: 75px;
     border-radius: 25px;
     font-size: 35px;
@@ -197,8 +196,7 @@ h2 i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-top: 5px solid black;
-    border-bottom: 5px solid black;
+    border-block: 5px solid black;
 }
 
 .section-box {
@@ -220,8 +218,7 @@ h2 i {
     /*phong to anh chan dung*/
     left: 10%;
     border-radius: 200px;
-    border-top: 5px solid black;
-    border-bottom: 5px solid black;
+    border-block: 5px solid black;
     width: 200px;
     height: 200px;
 }
