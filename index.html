@@ -1,24 +1,57 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Nhóm 11 - Digital Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Nhóm 11 - Digital Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio nhóm 11 - Lập trình Web">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="animated-top-background "></div>
-    <div class="main-content">
-        <h1>Trang Chủ Nhóm 11</h1>
-    </div>
-    <p>Chào mừng đến với portfolio của nhóm. Chọn thành viên để xem trang cá nhân:</p>
-    <ul>
-        <li><a href="khiem/khiem.html">Nguyễn Đình Khiêm</a></li>
-        <li><a href="duc/">Hoàng Mạnh Đức</a></li>
-        <li><a href="lien/lien.html">Nguyễn Văn Liên</a></li>
-        <li><a href="members/.html">name</a></li>
-    </ul>
-</body>
 
+<!-- Topbar -->
+<header class="topbar">
+  <div class="left">Portfolio</div>
+  <div class="right">Nhóm 11</div>
+</header>
+
+<!-- Hero section với video nền -->
+<div class="hero-bg fullscreen">
+  <video autoplay muted loop playsinline>
+    <source src="image_home/banner.mp4" type="video/mp4">
+  </video>
+
+  <!-- Nội dung tiêu đề + các card -->
+  <div class="hero-content">
+    <h1>Trang Chủ Nhóm 11</h1>
+    <p>Chào mừng đến với portfolio của nhóm. Chọn thành viên để xem trang cá nhân:</p>
+
+    <div class="team-grid">
+      <!-- Khiêm -->
+      <div class="member-card">
+        <img src="images/khiem.jpg" alt="Nguyễn Đình Khiêm">
+        <h3>Nguyễn Đình Khiêm</h3>
+        <a href="khiem/khiem.html" class="btn">Xem CV</a>
+      </div>
+
+      <!-- Đức -->
+      <div class="member-card">
+        <img src="duc/avatar.jpg" alt="Hoàng Mạnh Đức">
+        <h3>Hoàng Mạnh Đức</h3>
+        <a href="duc/" class="btn">Xem CV</a>
+      </div>
+
+      <!-- Liên -->
+      <div class="member-card">
+        <img src="lien/images/portrait4.jpg" alt="Nguyễn Văn Liên">
+        <h3>Nguyễn Văn Liên</h3>
+        <a href="lien/lien.html" class="btn">Xem CV</a>
+      </div>
+
+      <!-- (Nếu muốn thêm người khác thì thêm card tại đây) -->
+    </div>
+  </div>
+</div>
+
+</body>
 </html>
