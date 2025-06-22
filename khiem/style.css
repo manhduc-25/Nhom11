@@ -1,3 +1,10 @@
+.details {
+    position: fixed;
+    top: -80px;  /* khoảng cách với mép trên */
+    right: 20px;    /* đổi thành `left: 20px;` nếu muốn ở góc trái */
+    z-index: 999;   /* đảm bảo nằm trên background */
+}
+
 :root {
     --blue: #1877f2;
     --blue-dark: #166fe5;
@@ -65,7 +72,7 @@ details[open] summary {
 ul {
     position: absolute;
     top: 100%;
-    left: 0;
+    right: 0;
     background-color: var(--white);
     border-radius: 8px;
     padding: 20px 0;
@@ -98,6 +105,7 @@ li {
     color: var(--text-color);
     cursor: pointer;
     transition: all 0.2s ease;
+    color: black;
 }
 
 li:hover {
@@ -112,4 +120,399 @@ li ion-icon {
 
 li:hover ion-icon {
     color: var(--blue);
+}
+
+html {
+    scroll-behavior: smooth;
+    /*luot*/
+}
+
+ul {
+    list-style: none;
+}
+
+/* Khi thay doi kich thuoc man hinh */
+@media (max-width: 830px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .subtitle {
+        padding: 20px;
+        font-size: 18px;
+    }
+
+    .section-box {
+        width: 90%;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    #contact ul li {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 10px 0;
+    }
+}
+@media (max-width: 1260px) {
+    .container img,
+    .section-box img {
+        display: none;
+    }
+
+}
+/*header*/
+.banner {
+    background-image: url(images/background1.jpg);
+}
+
+nav {
+    display: flex;
+    position: fixed;
+    justify-content: flex-end;
+    width: 100%;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    background: linear-gradient(to bottom right, black, #2B342F);
+    border-radius: 50px;
+    border: 1px solid #DFFFFF;
+}
+
+nav ul li a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 8px rgba(255, 255, 255, 0.5);
+}
+
+.container img {
+    position: absolute;
+    top: 50%;
+    right: 15%;
+    transform: translateY(-50%);
+    border-radius: 350px;
+    width: 350px;
+    height: auto;
+}
+
+.container .subtitle {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    border-block: 7px solid black;
+    padding: 75px;
+    border-radius: 25px;
+    font-size: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+/* nut back-to-top */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-size: 30px;
+  background: #1D231F;
+  color: white;
+  padding: 2px 9px 1px;
+  border-radius: 50%;
+  border: 1px solid #FAFEFF;
+  z-index: 1000;
+  text-align: center;
+  display: none;
+  transition: all 0.3s ease;
+}
+.back-to-top i{
+    font-size: 20px;
+}
+.back-to-top:hover {
+  background: #646464;
+}
+.show {
+  display: block;
+}
+
+h2 i {
+    margin-right: 10px;
+}
+
+
+/* backgound-img */
+.banner,
+#about,
+#work,
+#skill,
+#project,
+#cert,
+#hobby,
+#contact {
+    width: auto;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 0;
+    position: relative;
+}
+
+#about {
+    background-image: url(images/127_Sky.jpg);
+}
+
+#work {
+    background-image: url(images/148_Sky.jpg);
+}
+
+#skill {
+    background-image: url(images/164_Sky.jpg);
+}
+
+#project {
+    background-image: url(images/banner.jpg);
+}
+
+#cert {
+    background-image: url(images/150_Sky.jpg);
+}
+
+#hobby {
+    background-image: url(images/029_Sky.jpg);
+}
+
+#contact {
+    background-image: url(images/167_Sky.jpg);
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-block: 5px solid black;
+}
+
+.section-box {
+    width: 600px;
+    text-align: justify;
+    border-right: 5px solid white;
+    border-left: 5px solid white;
+    border-radius: 50px;
+    padding: 50px;
+    background-color: #1A1C17;
+}
+
+.section-box img {
+    position: absolute;
+    object-fit: cover;
+    object-position: top center;
+    top: 25%;
+    transform: scale(1.2);
+    /*phong to anh chan dung*/
+    left: 10%;
+    border-radius: 200px;
+    border-block: 5px solid black;
+    width: 200px;
+    height: 200px;
+}
+
+.section-box h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+}
+
+.section-box>p,
+.section-box ul li {
+    text-indent: 50px;
+    margin: 25px 0;
+    font-size: 23px;
+}
+
+.section-box p.time {
+    text-indent: 50px;
+}
+
+/* hobby */
+#hobby li i {
+    margin-right: 10px;
+    text-indent: 0;
+}
+
+/* skill */
+.bar {
+    width: 90%;
+    height: 5px;
+    margin: 5px 0 0 30px;
+    background-color: #ddd;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(to right, #495F77, #505B40);
+    text-align: right;
+    padding-right: 10px;
+    font-weight: bold;
+    line-height: 25px;
+    border-radius: 15px;
+}
+/* contact */
+#contact ul li {
+    margin: 15px 25px;
+    text-indent: 0;
+    display: flex;
+    justify-content: space-between;
+}
+#contact ul li a{
+    text-decoration: none;
+}
+
+/*-------------footer----------*/
+footer {
+    background: linear-gradient(to bottom right, #445859, #0F2A48);
+    display: flex;
+    width: auto;
+    height: 100px;
+    position: relative;
+}
+
+.contact-list {
+    position: absolute;
+    top: 50%;
+    left: 75px;
+    transform: translateY(-50%);
+}
+
+.contact-list ul {
+    display: flex;
+    gap: 15px;
+}
+
+.contact-list i {
+    font-size: 20px;
+}
+
+.contact-list a,
+.contact-list li:last-child {
+    margin: 0 13px;
+}
+
+.info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-left: 1px solid #B8ACBA;
+    border-right: 1px solid #122C4D;
+    padding: 10px 0;
+}
+
+.info ul {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    font-size: 13px;
+    margin: 0 250px;
+}
+
+.copyright {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 13px;
+}
+
+/* thay doi kich thuoc man hinh footer */
+@media (max-width: 1250px) {
+    footer {
+        flex-direction: column;
+        height: auto;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .contact-list {
+        position: static;
+        transform: none;
+        margin-bottom: 10px;
+    }
+
+    .contact-list ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .info {
+        position: static;
+        transform: none;
+        border: none;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+    }
+
+    .info ul {
+        margin: 0;
+        font-size: 13px;
+    }
+
+    .copyright {
+        position: static;
+        margin-top: 10px;
+        font-size: 13px;
+    }
+}
+
+/* ------animation raining------- */
+.rain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.raindrop {
+    position: absolute;
+    top: -20px;
+    width: 4px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.6);
+    animation: rain-fall linear infinite;
+    border-radius: 2px;
+}
+
+@keyframes rain-fall {
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
 }
