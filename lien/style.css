@@ -53,7 +53,7 @@ ul {
 
 /*header*/
 .banner {
-    background-image: url(/images/banner6.jpg);
+    background-image: url(images/banner6.jpg);
     background-size: cover;
     width: auto;
     height: 1280px;
@@ -141,31 +141,31 @@ h2 i {
 }
 
 #about {
-    background-image: url(/images/127_Sky.jpg);
+    background-image: url(images/127_Sky.jpg);
 }
 
 #work {
-    background-image: url(/images/148_Sky.jpg);
+    background-image: url(images/148_Sky.jpg);
 }
 
 #skill {
-    background-image: url(/images/164_Sky.jpg);
+    background-image: url(images/164_Sky.jpg);
 }
 
 #project {
-    background-image: url(/images/banner.jpg);
+    background-image: url(images/banner.jpg);
 }
 
 #cert {
-    background-image: url(/images/150_Sky.jpg);
+    background-image: url(images/150_Sky.jpg);
 }
 
 #hobby {
-    background-image: url(/images/029_Sky.jpg);
+    background-image: url(images/029_Sky.jpg);
 }
 
 #contact {
-    background-image: url(/images/167_Sky.jpg);
+    background-image: url(images/167_Sky.jpg);
 }
 
 .section {
