@@ -265,6 +265,9 @@ h2 i {
     border-radius: 15px;
 }
 /* contact */
+#contact p{
+    text-indent: 0;
+}
 #contact ul li {
     margin: 15px 25px;
     text-indent: 0;
