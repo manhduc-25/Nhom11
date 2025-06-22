@@ -53,7 +53,7 @@ ul {
 
 /*header*/
 .banner {
-    background-image: url(images/banner6.jpg);
+    background-image: url(./images/banner6.jpg);
     background-size: cover;
     width: auto;
     height: 1280px;
@@ -71,13 +71,13 @@ nav {
 
 nav ul {
     display: flex;
-    gap: 50px;
+    gap: 20px;
 }
 
 nav ul li a {
     display: inline-block;
     text-decoration: none;
-    font-size: 27px;
+    font-size: 15px;
     padding: 15px;
     transition: all 0.3s ease;
     background: linear-gradient(to bottom right, black, #2B342F);
@@ -95,8 +95,8 @@ nav ul li a:hover {
     top: 50%;
     right: 15%;
     transform: translateY(-50%);
-    border-radius: 500px;
-    width: 500px;
+    border-radius: 255px;
+    width: 255px;
     height: auto;
 }
 
@@ -107,12 +107,12 @@ nav ul li a:hover {
     transform: translateY(-50%);
     border-top: 10px solid black;
     border-bottom: 10px solid black;
-    padding: 100px;
-    border-radius: 50px;
-    font-size: 50px;
+    padding: 50px;
+    border-radius: 25px;
+    font-size: 25px;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 25px;
 }
 
 /*main*/
@@ -178,12 +178,12 @@ h2 i {
 }
 
 .section-box {
-    width: 1000px;
+    width: 500px;
     text-align: justify;
     border-right: 10px solid white;
     border-left: 10px solid white;
-    border-radius: 100px;
-    padding: 50px;
+    border-radius: 50px;
+    padding: 25px;
     background-color: #1A1C17;
 }
 
@@ -195,27 +195,27 @@ h2 i {
     transform: scale(1.2);
     /*phong to anh chan dung*/
     left: 10%;
-    border-radius: 300px;
+    border-radius: 150px;
     border-top: 10px solid black;
     border-bottom: 10px solid black;
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
 }
 
 .section-box h2 {
-    font-size: 50px;
-    margin-bottom: 75px;
+    font-size: 25px;
+    margin-bottom: 30px;
 }
 
 .section-box>p,
 .section-box ul li {
-    text-indent: 50px;
-    margin: 50px 0;
-    font-size: 35px;
+    text-indent: 25px;
+    margin: 25px 0;
+    font-size: 15px;
 }
 
 .section-box p.time {
-    text-indent: 100px;
+    text-indent: 50px;
 }
 
 /* hobby */
@@ -226,10 +226,10 @@ h2 i {
 /* conntact */
 .bar {
     width: 90%;
-    height: 10px;
-    margin-left: 50px;
+    height: 5px;
+    margin-left: 25px;
     background-color: #ddd;
-    border-radius: 15px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -239,13 +239,13 @@ h2 i {
     text-align: right;
     padding-right: 10px;
     font-weight: bold;
-    line-height: 25px;
-    border-radius: 15px;
+    line-height: 15px;
+    border-radius: 10px;
 }
 
 #contact ul li {
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
     text-indent: 0;
     display: flex;
     justify-content: space-between;
@@ -256,29 +256,29 @@ footer {
     background: linear-gradient(to bottom right, #445859, #0F2A48);
     display: flex;
     width: auto;
-    height: 200px;
+    height: 100px;
     position: relative;
 }
 
 .contact-list {
     position: absolute;
     top: 50%;
-    left: 100px;
+    left: 50px;
     transform: translateY(-50%);
 }
 
 .contact-list ul {
     display: flex;
-    gap: 20px;
+    gap: 10px;
 }
 
 .contact-list i {
-    font-size: 25px;
+    font-size: 15px;
 }
 
 .contact-list a,
 .contact-list li:last-child {
-    margin-left: 50px;
+    margin-left: 25px;
 }
 
 .info {
@@ -288,22 +288,22 @@ footer {
     transform: translate(-50%, -50%);
     border-left: 1px solid #B8ACBA;
     border-right: 1px solid #122C4D;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 .info ul {
     display: flex;
-    gap: 10px;
+    gap: 5px;
     flex-direction: column;
-    font-size: 20px;
-    margin: 0 250px;
+    font-size: 10px;
+    margin: 0 150px;
 }
 
 .copyright {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-size: 20px;
+    bottom: 5px;
+    right: 5px;
+    font-size: 10px;
 }
 
 /* thay doi kich thuoc man hinh footer */
@@ -311,38 +311,38 @@ footer {
     footer {
         flex-direction: column;
         height: auto;
-        padding: 20px 0;
+        padding: 10px 0;
         text-align: center;
     }
 
     .contact-list {
         position: static;
         transform: none;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .contact-list ul {
         flex-direction: row;
         justify-content: center;
-        gap: 10px;
+        gap: 5px;
     }
 
     .info {
         position: static;
         transform: none;
         border: none;
-        padding: 10px 20px;
-        margin-bottom: 20px;
+        padding: 5px 10px;
+        margin-bottom: 10px;
     }
 
     .info ul {
         margin: 0;
-        font-size: 18px;
+        font-size: 10px;
     }
 
     .copyright {
         position: static;
-        margin-top: 10px;
-        font-size: 16px;
+        margin-top: 5px;
+        font-size: 5px;
     }
 }
