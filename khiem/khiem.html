@@ -12,44 +12,44 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
-    rel="stylesheet">
+        rel="stylesheet">
 </head>
 
 <body>
     <!-- Header -->
-    <header id="home" class="banner">
+    <header id="home" class="background">
         <!-- details -->
         <details class="details">
-        <summary>
-            <ion-icon name="menu-outline"></ion-icon>
-        </summary>
+            <summary>
+                <ion-icon name="menu-outline"></ion-icon>
+            </summary>
             <ul>
                 <li>
-                <ion-icon name="home-outline"></ion-icon>
-                <span>Home</span>
-            </li>
-            <li>
-                <ion-icon name="person-outline"></ion-icon>
-                <span>Profile</span>
-            </li>
-            <li>
-                <ion-icon name="newspaper-outline"></ion-icon>
-                <span>Blog</span>
-            </li>
-            <li>
-                <ion-icon name="information-circle-outline"></ion-icon>
-                <span>About</span>
-            </li>
-            <li>
-                <ion-icon name="mail-outline"></ion-icon>
-                <span>Contact</span>
-            </li>
-            <li>
-                <ion-icon name="settings-outline"></ion-icon>
-                <span>Settings</span>
-            </li>
+                    <ion-icon name="home-outline"></ion-icon>
+                    <span>Home</span>
+                </li>
+                <li>
+                    <ion-icon name="person-outline"></ion-icon>
+                    <span>Profile</span>
+                </li>
+                <li>
+                    <ion-icon name="newspaper-outline"></ion-icon>
+                    <span>Blog</span>
+                </li>
+                <li>
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>About</span>
+                </li>
+                <li>
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <span>Contact</span>
+                </li>
+                <li>
+                    <ion-icon name="settings-outline"></ion-icon>
+                    <span>Settings</span>
+                </li>
             </ul>
-            </details>
+        </details>
         </nav>
         <div class="container">
             <img src="images/portrait4.jpg" alt="Khiem Avatar" class="avatar" width="350px">
@@ -229,10 +229,12 @@
                         </li>
                         <li>
                             <i class="fab fa-facebook-f"></i>
-                            <a href="https://www.facebook.com/nguyen.inh.khiem.459573/">https://www.facebook.com/nguyen.inh.khiem.459573/</a>
+                            <a
+                                href="https://www.facebook.com/nguyen.inh.khiem.459573/">https://www.facebook.com/nguyen.inh.khiem.459573/</a>
                         </li>
                         <li><i class="fab fa-instagram"></i>
-                            <a href="https://www.instagram.com/nguyendinhkhiem._/">https://www.instagram.com/nguyendinhkhiem._/</a>
+                            <a
+                                href="https://www.instagram.com/nguyendinhkhiem._/">https://www.instagram.com/nguyendinhkhiem._/</a>
                         </li>
                         <li><i class="fas fa-envelope"></i>nguyenvanlien.dt2021@gmail.com</li>
                     </ul>
@@ -246,7 +248,8 @@
         <div class="contact-list">
             <ul>
                 <li><a href="https://github.com/NDK1074"><i class="fab fa-github"></i></a></li>
-                <li><a href="https://www.facebook.com/nguyen.inh.khiem.459573/"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://www.facebook.com/nguyen.inh.khiem.459573/"><i class="fab fa-facebook-f"></i></a>
+                </li>
                 <li><a href="https://www.instagram.com/nguyendinhkhiem._/"><i class="fab fa-instagram"></i></a></li>
                 <li><i class="fas fa-envelope"></i></li>
             </ul>
@@ -263,7 +266,7 @@
             © 2025 Nguyen Van Lien. All rights reserved.
         </div>
     </footer>
-    
+
     <!-- Nút trở về back-to-top -->
     <a href="#home" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
     <script>
@@ -277,28 +280,3 @@
             }
         });
     </script>
-
-    <!-- animation rainning -->
-    <div class="rain-container"></div>
-    <script>
-        const rainContainer = document.querySelector('.rain-container');
-
-        function createRaindrop() {
-            const drop = document.createElement('div');
-            drop.classList.add('raindrop');
-
-            drop.style.left = Math.random() * window.innerWidth + 'px';
-            drop.style.animationDuration = (0.5 + Math.random()) + 's';
-            drop.style.height = (10 + Math.random() * 20) + 'px';
-            drop.style.opacity = 0.2 + Math.random() * 0.4;
-
-            rainContainer.appendChild(drop);
-
-            setTimeout(() => drop.remove(), 2000);
-        }
-
-        setInterval(createRaindrop, 50);
-    </script>
-</body>
-
-</html>
