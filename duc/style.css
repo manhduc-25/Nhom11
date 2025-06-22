@@ -1,0 +1,347 @@
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: url('hero-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+  padding-top: 60px;
+}
+.hero {
+  position: relative;
+  height: 200px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+}
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+.hero-title.animated-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+.hero-subtitle {
+  font-size: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #fff;
+  width: 0;
+  animation: typing 2s steps(25) forwards, blink 0.5s step-end infinite;
+}
+@keyframes typing { from { width: 0; } to { width: 265px; } }
+@keyframes blink { 50% { border-color: transparent; } }
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.7); /* mờ để nhìn được banner bên dưới */
+  z-index: 1000;
+  display: flex;
+  justify-content: right;
+  padding: 10px 0;
+  gap: 30px;
+  backdrop-filter: blur(4px); /* (optional) tạo hiệu ứng mờ đẹp */
+}
+
+.navbar a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;  
+  position: relative;
+}
+.navbar a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #00b894;
+  transition: width 0.3s ease-in-out;
+}
+.navbar a:hover::after { width: 100%; }
+/* ===== Container & Cards ===== */
+.container { padding: 20px; }
+.card {
+  background: #fff; margin-bottom: 20px;
+  padding: 20px; border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  opacity: 0; transform: translateY(40px);
+  transition: all 1.2s ease-out;
+}
+.card.show { opacity: 1; transform: translateY(0); }
+
+/* ===== About Section ===== */
+.about-layout {
+  display: flex;
+  align-items: flex-start;  /* các phần nằm ngang đều nhau theo top */
+  gap: 500px;                 /* khoảng cách giữa ảnh và chữ */
+  flex-wrap: wrap;
+}
+
+.about-left {
+  flex: 0 0 auto;            /* ảnh chiếm kích thước đúng với nó */
+}
+
+.avatar-large {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: block;           /* tránh bị ảnh hưởng bởi text-align */
+  margin: 0;
+  margin-left: 20px;
+}
+
+.about-right {
+  flex: 1;
+  text-align: left;
+}
+
+.about-right h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.info-columns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.info-left,
+.info-right {
+  flex: 1;
+}
+
+.info-left p,
+.info-right p {
+  margin: 8px 0;
+  font-size: 24px;
+}
+/* ===== Career ===== */
+#career p { margin: 8px 0; font-size: 24px; }
+#career h3 {
+  margin-top: 16px; font-size: 28px;
+  color: var(--secondary);
+}
+
+/* ===== Hobbies ===== */
+.hobby-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+.hobby-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.hobby-card {
+  width: 120px;
+  height: 120px;
+  background: #f2f2f2;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+.hobby-card i {
+  font-size: 32px;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+.hobby-card span {
+  font-size: 14px;
+  color: #333;
+}
+.hobby-card:hover {
+  transform: translateY(-5px);
+  background: #e0e0e0;
+}
+
+/* ===== Skills ===== */
+
+.progress-container {
+  margin-bottom: 15px;
+}
+.progress-container span {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+.progress-bar {
+  background-color: #ddd;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.fill {
+  height: 100%;
+  background-color: #00b894;
+  width: 0;
+  transition: width 1s ease-in-out;
+}
+.card.show .progress-bar .fill {
+  width: var(--target-width);
+}
+/* ===== Awards ===== */
+#awards ul { list-style: square; margin-left: 20px; }
+
+/* ===== Projects ===== */
+.project-section {
+  text-align: center;
+  padding: 40px;
+}
+.project-card {
+  position: relative;
+  display: inline-block;
+  width: 330px;
+  height: 250px; /* ✅ tăng chiều cao ảnh/thẻ */
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;  /* ✅ đảm bảo ảnh lấp đầy thẻ */
+  object-fit: cover;
+  display: block;
+}
+.project-info {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  transition: opacity 0.4s ease;
+}
+.project-card:hover .project-info {
+  opacity: 1;
+}
+/* ===== Contact ===== */
+.contact-section {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px;
+  background: #fff;
+  color: #000;
+  gap: 40px;
+}
+
+.contact-left, .contact-right {
+  flex: 1 1 300px;
+}
+
+.contact-left h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.contact-left h2 span {
+  color: #000;
+  font-weight: bold;
+}
+.contact-left p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.social-icons a {
+  display: inline-block;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 10px;
+  transition: background 0.3s, transform 0.3s;
+}
+.social-icons a:hover {
+  background: #000;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.contact-right form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-right input,
+.contact-right textarea {
+  padding: 12px;
+  background: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.contact-right textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-right button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-right button:hover {
+  background: #333;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  background: #333;
+  color: white;
+  padding: 10px;
+}
