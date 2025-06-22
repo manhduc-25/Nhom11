@@ -87,7 +87,7 @@ nav ul li a:hover {
     transform: translateY(-4px);
     box-shadow: 0 5px 8px rgba(255, 255, 255, 0.5);
 }
-
+/* anh chan dung 1 */
 .container img {
     position: absolute;
     top: 50%;
@@ -209,7 +209,7 @@ h2 i {
 }
 
 .section-box {
-    width: 600px;
+    width: 700px;
     text-align: justify;
     border-right: 5px solid white;
     border-left: 5px solid white;
@@ -217,7 +217,7 @@ h2 i {
     padding: 50px;
     background-color: #1A1C17;
 }
-
+/* anh chan dung 2 */
 .section-box img {
     position: absolute;
     object-fit: cover;
@@ -225,7 +225,7 @@ h2 i {
     top: 25%;
     transform: scale(1.2);
     /*phong to anh chan dung*/
-    left: 10%;
+    left: 8%;
     border-radius: 200px;
     border-block: 5px solid black;
     width: 200px;
