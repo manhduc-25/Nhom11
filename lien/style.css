@@ -106,11 +106,20 @@ nav ul li a:hover {
     border-block: 7px solid black;
     padding: 75px;
     border-radius: 25px;
-    font-size: 35px;
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
+
+.container h1{
+    font-size: 60px;
+    margin-bottom: 50px;
+}
+.container p{
+    font-size: 25px;
+    margin-left: 50px;
+}
+
 /* nut back-to-top */
 .back-to-top {
   position: fixed;
