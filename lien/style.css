@@ -15,16 +15,11 @@ ul {
 }
 
 /* Khi thay doi kich thuoc man hinh */
-@media (max-width: 768px) {
+@media (max-width: 830px) {
     .container {
         flex-direction: column;
         align-items: center;
         text-align: center;
-    }
-
-    .container img,
-    .section-box img {
-        display: none;
     }
 
     nav ul {
@@ -50,14 +45,16 @@ ul {
         margin: 10px 0;
     }
 }
+@media (max-width: 1260px) {
+    .container img,
+    .section-box img {
+        display: none;
+    }
 
+}
 /*header*/
 .banner {
-    background-image: url(./images/banner6.jpg);
-    background-size: cover;
-    width: auto;
-    height: 1280px;
-    position: relative;
+    background-image: url(images/banner6.jpg);
 }
 
 nav {
@@ -66,23 +63,24 @@ nav {
     justify-content: flex-end;
     width: 100%;
     top: 10px;
+    right: 10px;
     z-index: 1000;
 }
 
 nav ul {
     display: flex;
-    gap: 20px;
+    gap: 25px;
 }
 
 nav ul li a {
     display: inline-block;
     text-decoration: none;
-    font-size: 15px;
-    padding: 15px;
+    font-size: 18px;
+    padding: 10px;
     transition: all 0.3s ease;
     background: linear-gradient(to bottom right, black, #2B342F);
     border-radius: 50px;
-    border: 2px solid #DFFFFF;
+    border: 1px solid #DFFFFF;
 }
 
 nav ul li a:hover {
@@ -95,8 +93,8 @@ nav ul li a:hover {
     top: 50%;
     right: 15%;
     transform: translateY(-50%);
-    border-radius: 255px;
-    width: 255px;
+    border-radius: 350px;
+    width: 350px;
     height: auto;
 }
 
@@ -105,22 +103,45 @@ nav ul li a:hover {
     top: 50%;
     left: 10%;
     transform: translateY(-50%);
-    border-top: 10px solid black;
-    border-bottom: 10px solid black;
-    padding: 50px;
+    border-top: 7px solid black;
+    border-bottom: 7px solid black;
+    padding: 75px;
     border-radius: 25px;
-    font-size: 25px;
+    font-size: 35px;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 30px;
+}
+/* nut back-to-top */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-size: 30px;
+  background: #1D231F;
+  color: white;
+  padding: 5px 10px 4px;
+  border-radius: 50%;
+  border: 1px solid #FAFEFF;
+  z-index: 1000;
+  text-align: center;
+  display: none;
+  transition: all 0.3s ease;
 }
 
-/*main*/
+.back-to-top:hover {
+  background: #646464;
+}
+.show {
+  display: block;
+}
+
 h2 i {
     margin-right: 10px;
 }
 
 /* backgound-img */
+.banner,
 #about,
 #work,
 #skill,
@@ -129,7 +150,7 @@ h2 i {
 #hobby,
 #contact {
     width: auto;
-    height: 500px;
+    height: 250px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -178,12 +199,12 @@ h2 i {
 }
 
 .section-box {
-    width: 500px;
+    width: 600px;
     text-align: justify;
-    border-right: 10px solid white;
-    border-left: 10px solid white;
+    border-right: 5px solid white;
+    border-left: 5px solid white;
     border-radius: 50px;
-    padding: 25px;
+    padding: 50px;
     background-color: #1A1C17;
 }
 
@@ -195,23 +216,23 @@ h2 i {
     transform: scale(1.2);
     /*phong to anh chan dung*/
     left: 10%;
-    border-radius: 150px;
-    border-top: 10px solid black;
-    border-bottom: 10px solid black;
-    width: 150px;
-    height: 150px;
+    border-radius: 200px;
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+    width: 200px;
+    height: 200px;
 }
 
 .section-box h2 {
-    font-size: 25px;
-    margin-bottom: 30px;
+    font-size: 32px;
+    margin-bottom: 50px;
 }
 
 .section-box>p,
 .section-box ul li {
-    text-indent: 25px;
+    text-indent: 50px;
     margin: 25px 0;
-    font-size: 15px;
+    font-size: 23px;
 }
 
 .section-box p.time {
@@ -221,15 +242,16 @@ h2 i {
 /* hobby */
 #hobby li i {
     margin-right: 10px;
+    text-indent: 0;
 }
 
-/* conntact */
+/* skill */
 .bar {
     width: 90%;
     height: 5px;
-    margin-left: 25px;
+    margin: 5px 0 0 30px;
     background-color: #ddd;
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
 }
 
@@ -239,19 +261,21 @@ h2 i {
     text-align: right;
     padding-right: 10px;
     font-weight: bold;
-    line-height: 15px;
-    border-radius: 10px;
+    line-height: 25px;
+    border-radius: 15px;
 }
-
+/* contact */
 #contact ul li {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin: 15px 25px;
     text-indent: 0;
     display: flex;
     justify-content: space-between;
 }
+#contact ul li a{
+    text-decoration: none;
+}
 
-/*footer*/
+/*-------------footer----------*/
 footer {
     background: linear-gradient(to bottom right, #445859, #0F2A48);
     display: flex;
@@ -263,22 +287,22 @@ footer {
 .contact-list {
     position: absolute;
     top: 50%;
-    left: 50px;
+    left: 75px;
     transform: translateY(-50%);
 }
 
 .contact-list ul {
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 
 .contact-list i {
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .contact-list a,
 .contact-list li:last-child {
-    margin-left: 25px;
+    margin: 0 13px;
 }
 
 .info {
@@ -293,25 +317,25 @@ footer {
 
 .info ul {
     display: flex;
-    gap: 5px;
+    gap: 10px;
     flex-direction: column;
-    font-size: 10px;
-    margin: 0 150px;
+    font-size: 13px;
+    margin: 0 250px;
 }
 
 .copyright {
     position: absolute;
-    bottom: 5px;
-    right: 5px;
-    font-size: 10px;
+    bottom: 10px;
+    right: 10px;
+    font-size: 13px;
 }
 
 /* thay doi kich thuoc man hinh footer */
-@media (max-width: 768px) {
+@media (max-width: 1250px) {
     footer {
         flex-direction: column;
         height: auto;
-        padding: 10px 0;
+        padding: 20px 0;
         text-align: center;
     }
 
@@ -324,25 +348,25 @@ footer {
     .contact-list ul {
         flex-direction: row;
         justify-content: center;
-        gap: 5px;
+        gap: 10px;
     }
 
     .info {
         position: static;
         transform: none;
         border: none;
-        padding: 5px 10px;
+        padding: 10px 20px;
         margin-bottom: 10px;
     }
 
     .info ul {
         margin: 0;
-        font-size: 10px;
+        font-size: 13px;
     }
 
     .copyright {
         position: static;
-        margin-top: 5px;
-        font-size: 5px;
+        margin-top: 10px;
+        font-size: 13px;
     }
 }
