@@ -236,7 +236,8 @@ h2 i {
 }
 
 .section-box p.time {
-    text-indent: 50px;
+    text-indent: 100px;
+    font-size: 15px;
 }
 
 /* hobby */
