@@ -65,7 +65,7 @@ details[open] summary {
     border-radius: 50% 50% 0 0;
 }
 
-ul {
+details ul {
     position: absolute;
     top: 100%;
     right: 0;
@@ -92,7 +92,7 @@ ul {
     }
 }
 
-li {
+details li {
     list-style: none;
     padding: 12px 16px;
     display: flex;
@@ -104,7 +104,7 @@ li {
     color: black;
 }
 
-li:hover {
+details li:hover {
     background-color: var(--blue-light);
     color: var(--blue);
 }
@@ -118,7 +118,7 @@ li:hover ion-icon {
     color: var(--blue);
 }
 
-li a {
+details li a {
     text-decoration: none;
     color: inherit;
 }
@@ -199,7 +199,7 @@ ul {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    font-size:30px;
+    font-size: 30px;
     background: #1D231F;
     color: white;
     padding: 2px 9px 1px;
@@ -231,10 +231,9 @@ h2 i {
 /* backgound-img */
 .backgound,
 #about,
-#work,
+#education,
 #skill,
 #project,
-#cert,
 #hobby,
 #contact {
     width: auto;
@@ -248,6 +247,7 @@ h2 i {
     padding: 100px 0;
     position: relative;
 }
+
 #home {
     background-image: url(images/background1.jpg);
 }
@@ -256,7 +256,7 @@ h2 i {
     background-image: url(images/background2.jpg);
 }
 
-#work {
+#education {
     background-image: url(images/background3.jpg);
 }
 
@@ -268,16 +268,12 @@ h2 i {
     background-image: url(images/background5.jpg);
 }
 
-#cert {
-    background-image: url(images/background6.jpg);
-}
-
 #hobby {
     background-image: url(images/background7.jpg);
 }
 
 #contact {
-    background-image: url(images/background8.jpg);
+    background-image: url(images/background6.jpg);
 }
 
 .section {
@@ -313,12 +309,20 @@ h2 i {
     height: 200px;
 }
 
-.section-box h2 {
-    font-size: 32px;
-    margin-bottom: 50px;
+.section-box p {
+    text-align: left;
+    text-indent: 0pxt;
+    margin: 25px 0;
+    font-size: 23px;
 }
 
-.section-box>p{
+.section-box ul li {
+    text-indent: 50px;
+    margin: 25px 0;
+    font-size: 23px;
+}
+
+.section-box h2 .section-box>p {
     text-indent: 50px;
     margin: 25px 0;
     font-size: 23px;
