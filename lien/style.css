@@ -120,7 +120,7 @@ nav ul li a:hover {
   font-size: 30px;
   background: #1D231F;
   color: white;
-  padding: 5px 10px 4px;
+  padding: 2px 9px 1px;
   border-radius: 50%;
   border: 1px solid #FAFEFF;
   z-index: 1000;
@@ -128,7 +128,9 @@ nav ul li a:hover {
   display: none;
   transition: all 0.3s ease;
 }
-
+.back-to-top i{
+    font-size: 20px;
+}
 .back-to-top:hover {
   background: #646464;
 }
