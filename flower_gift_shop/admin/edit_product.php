@@ -4,34 +4,37 @@ if (!isset($_SESSION['admin'])) {
   header("Location: login.php");
   exit;
 }
+
 require_once '../includes/db.php';
-?>
 
-<?php include 'header.php'; ?>
-
-<?php
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$product = null;
+$error = '';
+$success = '';
 
-// Lấy thông tin sản phẩm cần sửa
+// 🔄 Lấy thông tin sản phẩm cũ
 $stmt = $conn->prepare("SELECT * FROM products WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
-if ($result->num_rows !== 1) {
-  die("Không tìm thấy sản phẩm!");
+
+if ($result->num_rows === 1) {
+  $product = $result->fetch_assoc();
+} else {
+  die("❌ Không tìm thấy sản phẩm.");
 }
-$product = $result->fetch_assoc();
 
-$success = '';
-$error = '';
-
-// Xử lý khi submit
+// 📝 Xử lý khi submit form cập nhật
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $name = $_POST['name'];
   $description = $_POST['description'];
   $price = (float)$_POST['price'];
+  $category = $_POST['category'];
+  $occasion = $_POST['occasion'] ?? null;
+  $gift_type = $_POST['gift_type'] ?? null;
 
-  // Xử lý ảnh nếu có upload mới
+  $image_path = $product['image'];
+
   if (!empty($_FILES['image']['name'])) {
     $target_dir = "../product/flower/";
     $image_name = basename($_FILES["image"]["name"]);
@@ -42,23 +45,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
       $error = "❌ Upload ảnh thất bại.";
     }
-  } else {
-    $image_path = $product['image']; // Giữ ảnh cũ nếu không chọn ảnh mới
   }
 
-  // Cập nhật CSDL
   if (!$error) {
-    $stmt = $conn->prepare("UPDATE products SET name = ?, description = ?, price = ?, image = ? WHERE id = ?");
-    $stmt->bind_param("ssdsi", $name, $description, $price, $image_path, $id);
+    $stmt = $conn->prepare("UPDATE products SET name=?, description=?, price=?, image=?, category=?, occasion=?, gift_type=? WHERE id=?");
+    $stmt->bind_param("ssdssssi", $name, $description, $price, $image_path, $category, $occasion, $gift_type, $id);
+
     if ($stmt->execute()) {
-      $success = "✅ Cập nhật thành công!";
-      // Cập nhật lại $product để hiển thị mới
+      $success = "✅ Cập nhật sản phẩm thành công!";
+      // load lại dữ liệu sau khi cập nhật
       $product['name'] = $name;
       $product['description'] = $description;
       $product['price'] = $price;
       $product['image'] = $image_path;
+      $product['category'] = $category;
+      $product['occasion'] = $occasion;
+      $product['gift_type'] = $gift_type;
     } else {
-      $error = "❌ Lỗi CSDL: " . $conn->error;
+      $error = "❌ Lỗi cập nhật: " . $conn->error;
     }
   }
 }
@@ -69,6 +73,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <title>Sửa sản phẩm</title>
+  <script>
+    function toggleTags(value) {
+      document.getElementById('flower-tags').style.display = value === 'flower' ? 'block' : 'none';
+      document.getElementById('gift-tags').style.display = value === 'gift' ? 'block' : 'none';
+    }
+    window.onload = function () {
+      toggleTags('<?= $product['category'] ?>');
+    }
+  </script>
 </head>
 <body>
   <h2>✏️ Sửa sản phẩm</h2>
@@ -83,18 +96,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label>Mô tả:</label><br>
     <textarea name="description" rows="4" required><?= htmlspecialchars($product['description']) ?></textarea><br><br>
 
-    <label>Giá:</label><br>
+    <label>Giá (VNĐ):</label><br>
     <input type="number" name="price" value="<?= $product['price'] ?>" required><br><br>
 
     <label>Ảnh hiện tại:</label><br>
-    <img src="../<?= $product['image'] ?>" width="200"><br><br>
-
-    <label>Chọn ảnh mới (nếu cần đổi):</label><br>
+    <img src="../<?= $product['image'] ?>" width="120"><br><br>
+    <label>Đổi ảnh mới (nếu muốn):</label><br>
     <input type="file" name="image" accept="image/*"><br><br>
 
-    <button type="submit">Lưu thay đổi</button>
+    <label>Loại sản phẩm:</label><br>
+    <select name="category" onchange="toggleTags(this.value)">
+      <option value="flower" <?= $product['category'] === 'flower' ? 'selected' : '' ?>>Hoa</option>
+      <option value="gift" <?= $product['category'] === 'gift' ? 'selected' : '' ?>>Quà</option>
+    </select><br><br>
+
+    <div id="flower-tags">
+      <label>Dịp (occasion):</label><br>
+      <select name="occasion">
+        <option value="">-- Chọn dịp --</option>
+        <option value="sinh_nhat" <?= $product['occasion'] === 'sinh_nhat' ? 'selected' : '' ?>>Sinh nhật</option>
+        <option value="chuc_mung" <?= $product['occasion'] === 'chuc_mung' ? 'selected' : '' ?>>Chúc mừng</option>
+        <option value="hoa_tang" <?= $product['occasion'] === 'hoa_tang' ? 'selected' : '' ?>>Hoa tang</option>
+      </select><br><br>
+    </div>
+
+    <div id="gift-tags">
+      <label>Loại quà (gift_type):</label><br>
+      <select name="gift_type">
+        <option value="">-- Chọn loại --</option>
+        <option value="gau_bong" <?= $product['gift_type'] === 'gau_bong' ? 'selected' : '' ?>>Gấu bông</option>
+        <option value="do_ngot" <?= $product['gift_type'] === 'do_ngot' ? 'selected' : '' ?>>Đồ ngọt</option>
+        <option value="socola" <?= $product['gift_type'] === 'socola' ? 'selected' : '' ?>>Socola</option>
+      </select><br><br>
+    </div>
+
+    <button type="submit">💾 Cập nhật</button>
   </form>
 
-  <br><a href="manage_products.php">← Quay lại danh sách</a>
+  <br><a href="manage_products.php">← Quay lại quản lý</a>
 </body>
 </html>
