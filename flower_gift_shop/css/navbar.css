@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* body */
+body {
+    margin: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 25px;
+}
+
+/* logo */
+#logo {
+    border-bottom: 1px solid #EBEDE8;
+    width: auto;
+    height: 120px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+}
+
+#logo>div {
+    display: flex;
+    gap: 20px;
+    margin: auto 75px 10px;
+}
+
+#logo img {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform: translateY(-50%);
+}
+
+/* ô tìm kiếm */
+.search-box {
+    position: relative;
+    width: 250px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 35px 10px 15px;
+    box-sizing: border-box;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    background-color: #EBEDE8;
+    font-size: 17px;
+
+}
+
+.search-box input::placeholder {
+    color: rgb(172, 172, 172);
+}
+
+.search-box .search-btn {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* btn login register */
+#logo .login,
+#logo .register {
+    position: relative;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 0 15px;
+    height: 40px;
+}
+#logo .login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.login-btn{
+    margin-right: -3px;
+}
+.register-btn{
+    margin-left: -3px;
+}
+/* border btn log in */
+#logo .login::before,
+#logo .login::after,
+#logo .register::after,
+#logo .register::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5px;
+    height: 40%;
+    background-color: rgb(198, 198, 198);
+}
+
+#logo .login::before,
+#logo .register::before {
+    left: 0;
+}
+
+#logo .login::after,
+#logo .register::after {
+    right: 0;
+}
+
+/* navbar */
+nav {
+    width: auto;
+    height: 50px;
+}
+
+nav ul {
+    margin: 15px 0 auto 75px;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+nav li:last-of-type {
+    margin-right: 0;
+}
+
+nav li a {
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+    font-weight: 500;
+}
