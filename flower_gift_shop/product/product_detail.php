@@ -115,7 +115,7 @@ if (!$product) {
         <input type="number" name="quantity" value="1" min="1" required>
         <button type="submit"><i class="fa-solid fa-cart-shopping"></i>Thêm vào giỏ</button>
       </form>
-      <p><br><a href="product.php">Quay lại danh sách sản phẩm</a></p>
+      <p><br><a href="products.php">Quay lại danh sách sản phẩm</a></p>
     </div>
   </div>
   <!-- 🔙 Nút quay lại -->
