@@ -113,9 +113,9 @@ if (!$product) {
         <input type="hidden" name="id" value="<?= $product['id'] ?>">
         <label>Số lượng:</label>
         <input type="number" name="quantity" value="1" min="1" required>
-        <button type="submit">🛒 Thêm vào giỏ</button>
+        <button type="submit"><i class="fa-solid fa-cart-shopping"></i>Thêm vào giỏ</button>
       </form>
-      <p><br><a href="product_list.php">Quay lại danh sách sản phẩm</a></p>
+      <p><br><a href="product.php">Quay lại danh sách sản phẩm</a></p>
     </div>
   </div>
   <!-- 🔙 Nút quay lại -->
