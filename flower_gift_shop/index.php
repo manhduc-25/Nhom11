@@ -3,11 +3,6 @@ session_start();
 require_once 'includes/db.php';
 ?>
 
-<?php
-session_start();
-require_once 'includes/db.php';
-?>
-
 <!DOCTYPE html>
 <html lang="vi">
 
