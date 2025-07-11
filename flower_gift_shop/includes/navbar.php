@@ -52,10 +52,10 @@ if (session_status() === PHP_SESSION_NONE) {
   <nav>
     <ul>
       <li><a href="/flower_gift_shop/index.php">Trang Chủ</a></li>
-      <li><a href="#">Phổ Biến</a></li>
+      <li><a href="/flower_gift_shop/product/products.php">Danh Sách</a></li>
       <li><a href="#">Sinh Nhật</a></li>
       <li><a href="#">Tiệc Cưới</a></li>
-      <li><a href="/flower_gift_shop/product/products.php">Quà tặng</a></li>
+      <li><a href="/flower_gift_shop/product/gift.php">Quà tặng</a></li>
     </ul>
   </nav>
 </div>
