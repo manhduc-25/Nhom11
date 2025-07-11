@@ -4,9 +4,9 @@ require_once '../includes/db.php';
 
 $error = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  $email = trim($_POST["email"]);
+  $password = $_POST["password"];
 
   $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
   $stmt->bind_param("s", $email);
@@ -16,35 +16,140 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($result->num_rows === 1) {
     $user = $result->fetch_assoc();
     if (password_verify($password, $user['password'])) {
-      $_SESSION['user'] = $user['name']; // Lưu tên hoặc $user['id']
-      header("Location: ../index.php"); // 👉 Về trang chủ sau đăng nhập
+      $_SESSION['user'] = $user['username'];
+      header("Location: ../index.php");
       exit;
     } else {
-      $error = "❌ Mật khẩu không đúng.";
+      $error = "Mật khẩu không đúng";
     }
   } else {
-    $error = "❌ Email không tồn tại.";
+    $error = "Email không tồn tại";
   }
 }
 ?>
 
 <!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"><title>Đăng nhập</title></head>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng nhập</title>
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .login-form {
+      max-width: 450px;
+      margin: 60px auto;
+      padding: 30px 35px;
+      background-color: #EBEDE8;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px #81b19b;
+      font-family: Arial, sans-serif;
+    }
+
+    .login-form h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+      color: #81b19b;
+    }
+
+    .login-form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    .login-form input:focus {
+      border-color: #A50164;
+      outline: none;
+    }
+
+    .login-form button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background-color: #81b19b;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .login-form button:hover {
+      background-color: #333;
+    }
+
+    .login-form p {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 15px;
+    }
+
+    .login-form p a {
+      color: #A50164;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .login-form p a:hover {
+      text-decoration: underline;
+    }
+
+    .error,
+    .success {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+  </style>
+</head>
+
 <body>
-  <h2>🔐 Đăng nhập</h2>
-  <?php if ($error): ?><p style="color:red"><?= $error ?></p><?php endif; ?>
+  <!-- Navbar -->
+  <?php include '../includes/navbar.php'; ?>
 
-  <form method="POST">
-    <label>Email:</label><br>
-    <input type="email" name="email" required><br><br>
+  <div class="login-form">
+    <h2>Đăng nhập</h2>
 
-    <label>Mật khẩu:</label><br>
-    <input type="password" name="password" required><br><br>
+    <?php if (isset($_GET['registered'])): ?>
+      <div class="success">Đăng ký thành công! Hãy đăng nhập.</div>
+    <?php endif; ?>
 
-    <button type="submit">Đăng nhập</button>
-  </form>
+    <?php if ($error): ?>
+      <div class="error"><?= $error ?></div>
+    <?php endif; ?>
 
-  <p>Chưa có tài khoản? <a href="register.php">Đăng ký ngay</a></p>
+    <form method="POST">
+      <label for="email">Email:</label>
+      <input type="email" name="email" required>
+
+      <label for="password">Mật khẩu:</label>
+      <input type="password" name="password" required>
+
+      <button type="submit">Đăng nhập</button>
+    </form>
+
+    <p>Chưa có tài khoản? <a href="register.php">Đăng ký ngay</a></p>
+  </div>
+
+  <?php include '../includes/footer.php'; ?>
 </body>
+
 </html>
