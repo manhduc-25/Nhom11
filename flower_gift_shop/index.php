@@ -44,6 +44,7 @@ require_once 'includes/db.php';
   <div class="navbar">
     <a href="index.php">🏠 Trang chủ</a>
     <a href="product/products.php">🌸 Sản phẩm</a>
+    <a href="product/gift.php">🎁 Quà tặng</a>
     <a href="cart.php">🛒 Giỏ hàng</a>
 
     <?php if (isset($_SESSION['user'])): ?>
@@ -51,13 +52,18 @@ require_once 'includes/db.php';
       <a href="auth/logout.php">🚪 Đăng xuất</a>
     <?php else: ?>
       <a href="auth/login.php">🔐 Đăng nhập</a>
-      <a href="auth/register.php">📝 Đăng ký</a>
+      
     <?php endif; ?>
   </div>
 
   <h1>Chào mừng đến với Ứng dụng Giao Hoa và Quà Tặng!</h1>
   <p>Đặt hoa và quà tặng một cách nhanh chóng và dễ dàng 🌷🎁</p>
 
+    <!-- 🔎 Thanh tìm kiếm -->
+  <form method="GET" action="search.php">
+    <input type="text" name="search" placeholder="Tìm kiếm sản phẩm..." required>
+    <button type="submit">Tìm</button>
+  </form>
   <h2>🌟 Sản phẩm mới</h2>
 
   <div class="products">
