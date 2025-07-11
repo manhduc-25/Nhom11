@@ -1,66 +1,60 @@
-/* footer */
+/* ===== FOOTER ===== */
 footer {
-    background-color: #EBEDE8;
-    width: auto;
-    height: 200px;
-    clear: both;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+  background-color: var(--light-bg);
+  width: auto;
+  height: 200px;
+  clear: both;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-top: 1px solid var(--primary-color);
 }
 
-footer>div {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 75px;
-    flex-direction: row;
+footer > div {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px var(--side-margin);
+  flex-direction: row;
 }
 
-/* Điều chỉnh pay-method */
+/* Payment methods */
 .pay-method {
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
+  display: flex;
+  gap: 5px;
 }
-
 .pay-method svg {
-    background-color: white;
-    padding: 3px 5px;
-    border: 1px solid lightgray;
-    border-radius: 5px;
+  background-color: white;
+  padding: 3px 5px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
 }
-
 .pay-method svg:last-child {
-    color: white;
-    background-color: #A50164;
-    font-weight: bold;
+  color: white;
+  background-color: #A50164;
+  font-weight: bold;
 }
 
-/* Điều chỉnh các liên kết contact */
+/* Contact links */
 .contact {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
-
 .contact a {
-    text-decoration: none;
-    color: black;
-
-    border: 1px solid gray;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid gray;
+  border-radius: 50%;
+  font-size: 25px;
+  color: black;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
 }
-
 .contact a:hover {
-    background-color: lightgray;
-    transform: translateY(-5%);
-    transition: all 0.3s ease-in-out;
+  background-color: lightgray;
+  transform: translateY(-5%);
 }
