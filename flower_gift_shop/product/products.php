@@ -1,71 +1,100 @@
 <?php
 require_once '../includes/db.php';
 include '../includes/navbar.php';
-
-$occasions = ['' => '-- Tất cả --', 'sinh_nhat' => 'Sinh nhật', 'tinh_yeu' => 'Tình yêu', 'cam_on' => 'Cảm ơn', 'lang_man' => 'Lãng mạn'];
-$selected_occasion = $_GET['occasion'] ?? '';
-$search = $_GET['search'] ?? '';
 ?>
 
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-  <meta charset="UTF-8">
-  <title>🌸 Hoa tươi</title>
-  <style>
-    .product { border: 1px solid #ccc; width: 250px; margin: 10px; padding: 10px; float: left; text-align: center; }
-    .product img { width: 100%; height: 200px; object-fit: cover; }
-  </style>
+    <meta charset="UTF-8">
+    <title>Danh sách sản phẩm</title>
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        h2 {
+            text-align: center;
+            color: #81b19b;
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+        }
+
+        .product-card {
+            width: 220px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            background-color: #fff;
+            transition: box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .product-card h3 {
+            font-size: 18px;
+            margin: 10px 0 5px;
+        }
+
+        .product-card p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .product-card .price {
+            font-weight: bold;
+            color: #A50164;
+            margin-top: 8px;
+        }
+
+        .product-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
 </head>
+
 <body>
 
-<h2>🌸 Danh sách Hoa tươi</h2>
+    <h2>Danh sách sản phẩm</h2>
 
-<!-- 🔎 Bộ lọc dịp tặng -->
-<form method="GET">
-  <label>Dịp tặng:</label>
-  <select name="occasion">
-    <?php foreach ($occasions as $key => $label): ?>
-      <option value="<?= $key ?>" <?= $selected_occasion === $key ? 'selected' : '' ?>><?= $label ?></option>
-    <?php endforeach; ?>
-  </select>
+    <div class="product-list">
+        <?php
+        $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
 
-  <label>Tìm kiếm:</label>
-  <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Nhập tên sản phẩm">
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="product-card">';
+                echo '<a href="product_detail.php?id=' . $row['id'] . '">';
+                echo '<img src="../flower/' . htmlspecialchars($row['image']) . '" alt="' . htmlspecialchars($row['name']) . '">';
+                echo '<h3>' . htmlspecialchars($row['name']) . '</h3>';
+                echo '<p class="price">' . number_format($row['price'], 0, ',', '.') . '₫</p>';
+                echo '</a>';
+                echo '</div>';
+            }
+        } else {
+            echo '<p>Không có sản phẩm nào để hiển thị.</p>';
+        }
+        ?>
+    </div>
 
-  <button type="submit">Lọc</button>
-</form>
-
-<hr style="clear:both;">
-
-<div class="products">
-<?php
-$where = "category = 'flower'";
-
-if (!empty($selected_occasion)) {
-  $escaped = $conn->real_escape_string($selected_occasion);
-  $where .= " AND occasion = '$escaped'";
-}
-
-if (!empty($search)) {
-  $s = $conn->real_escape_string($search);
-  $where .= " AND name LIKE '%$s%'";
-}
-
-$result = $conn->query("SELECT * FROM products WHERE $where ORDER BY created_at DESC");
-
-if ($result->num_rows > 0):
-  while ($row = $result->fetch_assoc()):
-?>
-  <div class="product">
-    <img src="../<?= htmlspecialchars($row['image']) ?>" alt="Ảnh sản phẩm">
-    <h3><a href="product_detail.php?id=<?= $row['id'] ?>"><?= htmlspecialchars($row['name']) ?></a></h3>
-    <p><?= htmlspecialchars($row['description']) ?></p>
-    <strong><?= number_format($row['price']) ?> đ</strong>
-  </div>
-<?php endwhile; else: ?>
-  <p>Không tìm thấy sản phẩm phù hợp.</p>
-<?php endif; ?>
-</div>
+    <?php include '../includes/footer.php'; ?>
 </body>
+
 </html>
