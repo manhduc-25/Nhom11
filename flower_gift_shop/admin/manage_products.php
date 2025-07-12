@@ -6,76 +6,101 @@ if (!isset($_SESSION['admin'])) {
 }
 
 require_once '../includes/db.php';
-include 'header.php';
-
-$search = $_GET['search'] ?? '';
+$currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>
-<html lang="vi">
+<html>
+
 <head>
   <meta charset="UTF-8">
   <title>Quản lý sản phẩm</title>
   <style>
-    table { border-collapse: collapse; width: 100%; }
-    th, td { padding: 10px; border: 1px solid #ccc; }
-    form.search-form { margin-bottom: 20px; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    img {
+      height: 80px;
+    }
+
+    .actions a {
+      margin-right: 10px;
+    }
+
+    .add-product {
+      text-decoration: none;
+      color: #81b19b;
+    }
+
+    a {
+      text-decoration: none;
+    }
+    .change {
+      color: yellowgreen;
+    }
+
+    .delete {
+      color: red;
+    }
   </style>
 </head>
+
 <body>
 
-<h2>📦 Quản lý Sản phẩm</h2>
+  <?php include 'header.php'; ?>
 
-<!-- 🔍 Thanh tìm kiếm -->
-<form method="GET" class="search-form">
-  <input type="text" name="search" placeholder="🔍 Tìm tên sản phẩm..." value="<?= htmlspecialchars($search) ?>">
-  <button type="submit">Tìm</button>
-</form>
+  <h2><ion-icon name="cube-outline"></ion-icon> Danh sách sản phẩm</h2>
+  <p><a class="add-product" href="add_product.php"><ion-icon name="add-circle-outline"></ion-icon> Thêm sản phẩm mới</a></p>
 
-<table>
-  <tr>
-    <th>Ảnh</th>
-    <th>Tên</th>
-    <th>Mô tả</th>
-    <th>Giá</th>
-    <th>Danh mục</th>
-    <th>Hành động</th>
-  </tr>
-
-<?php
-$where = '1';
-if (!empty($search)) {
-  $s = $conn->real_escape_string($search);
-  $where .= " AND name LIKE '%$s%'";
-}
-
-$result = $conn->query("SELECT * FROM products WHERE $where ORDER BY created_at DESC");
-
-if ($result->num_rows > 0):
-  while ($row = $result->fetch_assoc()):
-?>
-  <tr>
-    <td><img src="../<?= htmlspecialchars($row['image']) ?>" width="80"></td>
-    <td><?= htmlspecialchars($row['name']) ?></td>
-    <td><?= htmlspecialchars($row['description']) ?></td>
-    <td><?= number_format($row['price']) ?> đ</td>
-    <td><?= $row['category'] === 'flower' ? 'Hoa' : 'Quà' ?></td>
-    <td>
-      <a href="edit_product.php?id=<?= $row['id'] ?>">✏️ Sửa</a> |
-      <a href="delete_product.php?id=<?= $row['id'] ?>" onclick="return confirm('Bạn có chắc muốn xoá?')">🗑️ Xoá</a>
-    </td>
-  </tr>
-<?php
-  endwhile;
-else:
-?>
-  <tr><td colspan="6">Không tìm thấy sản phẩm.</td></tr>
-<?php endif; ?>
-</table>
-
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Ảnh</th>
+        <th>Tên</th>
+        <th>Giá</th>
+        <th>Mô tả</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      $result = $conn->query("SELECT * FROM products ORDER BY id DESC");
+      while ($row = $result->fetch_assoc()):
+      ?>
+        <tr>
+          <td><?= $row['id'] ?></td>
+          <td><img src="../<?= $row['image'] ?>" alt="ảnh"></td>
+          <td><?= htmlspecialchars($row['name']) ?></td>
+          <td><?= number_format($row['price']) ?> đ</td>
+          <td><?= nl2br(htmlspecialchars($row['description'])) ?></td>
+          <td class="actions">
+            <a class="change" href="edit_product.php?id=<?= $row['id'] ?>"><ion-icon name="pencil-outline"></ion-icon> Sửa</a>
+            <a class="delete" href="delete_product.php?id=<?= $row['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn xoá?')"><ion-icon name="trash-outline"></ion-icon> Xoá</a>
+          </td>
+        </tr>
+      <?php endwhile; ?>
+    </tbody>
+  </table>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
-</html>
 
-  <br><a href="dashboard.php">← Quay lại Trang quản lý</a>
-</body>
 </html>
