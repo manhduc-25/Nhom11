@@ -5,11 +5,11 @@ if (!isset($_SESSION['admin'])) {
   exit;
 }
 require_once '../includes/db.php';
-?>
 
-<?php include 'header.php'; ?>
+// Biến xác định trang hiện tại cho menu
+$currentPage = basename($_SERVER['PHP_SELF']);
 
-<?php
+// Xử lý thêm sản phẩm
 $success = '';
 $error = '';
 
@@ -17,9 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $name = $_POST['name'];
   $description = $_POST['description'];
   $price = (float)$_POST['price'];
-  $category = $_POST['category'];
-  $occasion = $_POST['occasion'] ?? null;
-  $gift_type = $_POST['gift_type'] ?? null;
 
   $target_dir = "../product/flower/";
   $image_name = basename($_FILES["image"]["name"]);
@@ -28,26 +25,92 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
     $image_path = "product/flower/" . $image_name;
 
-    $stmt = $conn->prepare("INSERT INTO products (name, description, price, image, category, occasion, gift_type)
-                            VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssdssss", $name, $description, $price, $image_path, $category, $occasion, $gift_type);
+    $stmt = $conn->prepare("INSERT INTO products (name, description, price, image)
+                        VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssds", $name, $description, $price, $image_path);
 
     if ($stmt->execute()) {
-      $success = "✅ Thêm sản phẩm thành công!";
+      $success = "Thêm sản phẩm thành công!";
     } else {
-      $error = "❌ Lỗi CSDL: " . $conn->error;
+      $error = "Lỗi CSDL: " . $conn->error;
     }
   } else {
-    $error = "❌ Upload ảnh thất bại.";
+    $error = "Upload ảnh thất bại.";
   }
 }
 ?>
 
+<?php include 'header.php'; ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <title>Thêm sản phẩm</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #f8f8f8;
+      padding: 20px;
+      border-radius: 10px;
+      font-family: Arial, sans-serif;
+    }
+
+    form label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    form input,
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    form button {
+      margin-top: 20px;
+      padding: 10px;
+      width: 100%;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #555;
+    }
+
+    .success {
+      color: green;
+      text-align: center;
+    }
+
+    .error {
+      color: red;
+      text-align: center;
+    }
+  </style>
   <script>
     function toggleTags(value) {
       document.getElementById('flower-tags').style.display = value === 'flower' ? 'block' : 'none';
@@ -55,61 +118,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
   </script>
 </head>
-<body>
-  <h2>➕ Thêm sản phẩm mới</h2>
 
-  <?php if ($success): ?><p style="color:green"><?= $success ?></p><?php endif; ?>
-  <?php if ($error): ?><p style="color:red"><?= $error ?></p><?php endif; ?>
+<body>
+  <?php if ($success): ?><p class="success"><?= $success ?></p><?php endif; ?>
+  <?php if ($error): ?><p class="error"><?= $error ?></p><?php endif; ?>
 
   <form method="POST" enctype="multipart/form-data">
-    <label>Tên sản phẩm:</label><br>
-    <input type="text" name="name" required><br><br>
+    <h2 style="text-align:center;">Thêm sản phẩm mới</h2>
+    <label>Tên sản phẩm:</label>
+    <input type="text" name="name" required>
 
-    <label>Mô tả:</label><br>
-    <textarea name="description" rows="4" required></textarea><br><br>
+    <label>Mô tả:</label>
+    <textarea name="description" rows="4" required></textarea>
 
-    <label>Giá (VNĐ):</label><br>
-    <input type="number" name="price" required><br><br>
+    <label>Giá (VNĐ):</label>
+    <input type="number" name="price" required step="1000">
 
-    <label>Ảnh sản phẩm:</label><br>
-    <input type="file" name="image" accept="image/*" required><br><br>
+    <label>Ảnh sản phẩm:</label>
+    <input type="file" name="image" accept="image/*" required>
 
-    <!-- Category -->
-    <label>Loại sản phẩm:</label><br>
+    <label>Loại sản phẩm:</label>
     <select name="category" onchange="toggleTags(this.value)" required>
       <option value="flower">Hoa</option>
       <option value="gift">Quà</option>
-    </select><br><br>
+    </select>
 
-    <!-- Tags for flower -->
     <div id="flower-tags">
-      <label>🎉 Dịp tặng (nếu là hoa):</label><br>
+      <label>Dịp tặng:</label>
       <select name="occasion">
         <option value="">-- Chọn dịp --</option>
         <option value="sinh_nhat">Sinh nhật</option>
         <option value="chuc_mung">Chúc mừng</option>
         <option value="hoa_tang">Hoa tang lễ</option>
-      </select><br><br>
+      </select>
     </div>
 
-    <!-- Tags for gift -->
     <div id="gift-tags" style="display:none;">
-      <label>🎁 Loại quà (nếu là quà):</label><br>
+      <label>Loại quà:</label>
       <select name="gift_type">
         <option value="">-- Chọn loại --</option>
         <option value="gau_bong">Gấu bông</option>
         <option value="do_ngot">Đồ ngọt</option>
         <option value="socola">Socola</option>
-      </select><br><br>
+      </select>
     </div>
 
     <button type="submit">Lưu sản phẩm</button>
   </form>
 
-  <br><a href="dashboard.php">← Về trang quản lý</a>
 </body>
-</html>
 
-  <br><a href="dashboard.php">← Về trang quản lý</a>
-</body>
 </html>
