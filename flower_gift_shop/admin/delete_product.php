@@ -11,7 +11,7 @@ require_once '../includes/db.php';
 <?php
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-// Lấy ảnh sản phẩm trước khi xoá (nếu muốn xoá luôn ảnh)
+// Lấy ảnh sản phẩm trước khi xoá 
 $stmt = $conn->prepare("SELECT image FROM products WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
@@ -20,7 +20,7 @@ $result = $stmt->get_result();
 if ($result->num_rows === 1) {
   $product = $result->fetch_assoc();
 
-  // Xoá ảnh vật lý (nếu có)
+  // Xoá ảnh vật lý 
   $image_path = '../' . $product['image'];
   if (file_exists($image_path)) {
     unlink($image_path);
