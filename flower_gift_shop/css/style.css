@@ -277,17 +277,122 @@ html {
   transform: translateY(0);
 }
 
-/* ===== FORM LOGIN ===== */
-.container-form-login {
-  margin: var(--section-margin) var(--side-margin);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  background-color: var(--light-bg);
+/* ===== RESPONSIVE - MEDIA QUERIES ===== */
+@media (max-width: 1024px) {
+  :root {
+    --side-margin: 40px;
+    --img-height-lg: 400px;
+    --img-height-md: 300px;
+    --img-height-sm: 250px;
+  }
+
+  .popular-product-list,
+  .review-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .advantages {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: var(--section-margin) var(--side-margin);
+  }
+
+  #team {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .team-text {
+    width: 100%;
+  }
+
+  .why-us-text p {
+    width: 100%;
+  }
 }
 
-.container-form-login h2 {
-  font-weight: 500;
-  text-transform: uppercase;
+@media (max-width: 768px) {
+  :root {
+    --side-margin: 20px;
+  }
+
+  #service-highlight {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .popular-product-list,
+  .review-list {
+    grid-template-columns: 1fr;
+  }
+
+  .reason-image img {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+  }
+
+  #team img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .advantages-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .advantages-item {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact a {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+
+  .back-to-top {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .footer-sitemap {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sitemap-column {
+    text-align: center;
+  }
+
+  .review-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  #reason-to-buy {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .reason-image img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .reason-text {
+    padding: 0 10px;
+  }
 }
