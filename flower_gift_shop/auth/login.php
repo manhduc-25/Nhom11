@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       padding: 30px 35px;
       background-color: #EBEDE8;
       border-radius: 10px;
-      box-shadow: 0 5px 20px #81b19b;
+      box-shadow: -13px 20px 20px #81b19b;
       font-family: Arial, sans-serif;
     }
 
@@ -118,6 +118,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       font-weight: bold;
       font-size: 15px;
     }
+
+    .admin-login {
+      text-decoration: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      color: white;
+      background-color: #81b19b;
+      border-radius: 50%;
+    }
   </style>
 </head>
 
@@ -147,6 +158,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </form>
 
     <p>Chưa có tài khoản? <a href="register.php">Đăng ký ngay</a></p>
+
+    <a class="admin-login" href="../admin/login.php">A</a>
   </div>
 
   <?php include '../includes/footer.php'; ?>
