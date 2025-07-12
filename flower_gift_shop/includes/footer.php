@@ -1,4 +1,14 @@
 <footer>    
+    <div class="footer-sitemap">
+      <ul>
+        <li><a href="index.php">Trang chủ</a></li>
+        <li><a href="product/products.php">Sản phẩm</a></li>
+        <li><a href="#">Liên hệ</a></li>
+        <li><a href="auth/register.php">Đăng ký</a></li>
+        <li><a href="auth/login.php">Đăng nhập</a></li>
+        <li><a href="auth/cart.php">Giỏ hàng</a></li>
+      </ul>
+    </div>
     <div class="footer-content">
         <!-- pay-method -->
         <div class="pay-method">
@@ -35,6 +45,9 @@
             <a href="#"><i class="fa-brands fa-tiktok"></i></a>
             <a href="#"><i class="fa-regular fa-envelope"></i></a>
         </div>
+    </div>
+    <div class="footer-copyright">
+      © 2025 <a href="#" target="_blank">Flower Gift Shop</a>. All rights reserved.
     </div>
     <!-- Back-to-top -->
     <a href="#home-page" class="back-to-top"><i class="fa-solid fa-chevron-up"></i></a>
