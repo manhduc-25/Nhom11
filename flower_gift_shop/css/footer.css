@@ -2,19 +2,17 @@
 footer {
   background-color: var(--light-bg);
   width: auto;
-  height: 200px;
+  height: 450px;
   clear: both;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   border-top: 1px solid var(--primary-color);
 }
 
-footer > div {
+footer .footer {
   display: flex;
   justify-content: space-between;
   margin: 20px var(--side-margin);
-  flex-direction: row;
 }
 
 /* Payment methods */
@@ -22,12 +20,14 @@ footer > div {
   display: flex;
   gap: 5px;
 }
+
 .pay-method svg {
   background-color: white;
   padding: 3px 5px;
   border: 1px solid lightgray;
   border-radius: 5px;
 }
+
 .pay-method svg:last-child {
   color: white;
   background-color: #A50164;
@@ -41,6 +41,7 @@ footer > div {
   align-items: center;
   gap: 5px;
 }
+
 .contact a {
   width: 40px;
   height: 40px;
@@ -54,7 +55,51 @@ footer > div {
   justify-content: center;
   transition: all 0.3s ease-in-out;
 }
+
 .contact a:hover {
   background-color: lightgray;
   transform: translateY(-5%);
+}
+
+/* ===== SITEMAP ===== */
+.footer-sitemap {
+  margin: 50px var(--side-margin);
+}
+
+.footer-sitemap ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-sitemap ul li {
+  margin: 5px 0;
+}
+
+.footer-sitemap ul li a {
+  color: #555;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-sitemap ul li a:hover {
+  color: var(--primary-color);
+}
+
+/* ===== COPYRIGHT ===== */
+.footer-copyright {
+  text-align: center;
+  padding: 15px 0;
+  font-size: 13px;
+  color: #888;
+  border-top: 1px solid #ccc;
+}
+
+.footer-copyright a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.footer-copyright a:hover {
+  text-decoration: underline;
 }
